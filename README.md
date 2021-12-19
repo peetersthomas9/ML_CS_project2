@@ -1,6 +1,6 @@
 # ML_CS_project2
 
-We have 4 different folders : 
+We have r different folders : 
 
 data : 	In this folder we have the initial data and the preprocessed data. 
 	We also have the different embedded matrix (the one obtained with the method in class and the one obtain using glove dataset. 
@@ -13,6 +13,8 @@ model : folder where we save all our model compute
 	model_LSTM should be run on google colab so that we can use the GPU and compute our model faster, the cvs file is directly created at the end
 
 run : file where we can run our linear model to obtain the .cvs file with our prediction. 
+
+BERTfinetunedmodels: Jupyter notebooks of BERT models and variants. They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps.
 
 how to run LSTM and linear model : 
 
