@@ -46,6 +46,6 @@ In run folder : Run 'run_linear' to get the csv file for our prediction
 FOR BERT models : --------------------------------------------------------------------------------
 
 
-They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps.
+They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps. The data and checkpoints need to be saved on google drive.
 
  
