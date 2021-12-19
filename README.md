@@ -1,6 +1,6 @@
 # ML_CS_project2
 
-We have r different folders : 
+We have 5 different folders : 
 
 data : 	In this folder we have the initial data and the preprocessed data. 
 	We also have the different embedded matrix (the one obtained with the method in class and the one obtain using glove dataset. 
@@ -14,8 +14,7 @@ model : folder where we save all our model compute
 
 run : file where we can run our linear model to obtain the .cvs file with our prediction. 
 
-BERTfinetunedmodels: Jupyter notebooks of BERT models and variants. They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps.
-
+BERTfinetunedmodels: Jupyter notebooks of BERT models and variants.
 how to run LSTM and linear model : 
 
 Put the train and test set in data/not_preprocessed. 
@@ -42,3 +41,11 @@ In model folder : Run model_linear to build a model (you can modify which model 
 In run folder : Run 'run_linear' to get the csv file for our prediction
 
 ---------------------------------------------------------------------------------------------------
+
+
+FOR BERT models : --------------------------------------------------------------------------------
+
+
+They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps.
+
+ 
