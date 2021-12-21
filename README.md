@@ -14,7 +14,7 @@ model : folder where we save all our model compute
 
 run : file where we can run our linear model to obtain the .cvs file with our prediction. 
 
-BERTfinetunedmodels: Jupyter notebooks of BERT models and variants.
+BERTfinetunedmodels: Jupyter notebooks of BERT models and variants. The code for the "compute_metrics" function was curtosy of a class taught by James Henderson (IDIAP). 
 how to run LSTM and linear model : 
 
 Put the train and test set in data/not_preprocessed. 
