@@ -7,7 +7,7 @@ pre-processing : 	In this folder we have all the jupyter file to pre-processed t
 			clean_text : we pre-process the text to get simpler sentence (remove punctuation, stop word, lower case, lemmatization)
 			tokenizer_embedding: we create the embedding matrix and the tokenizer (convert word to int) 
 
-model : folder where we save all our model compute 
+model : folder where we save all our model computed
 	model_LSTM should be run on google colab so that we can use the GPU and compute our model faster, the cvs file is directly created at the end
 
 run : file where we can run our linear model to obtain the .cvs file with our prediction. 
@@ -20,7 +20,7 @@ In preprocessing : Run clean_text to prerocess the data
 
 FOR LSTM : ----------------------------------------------------------------------------------------
 
-Download the pre-trained word vectors https://github.com/stanfordnlp/GloVe and put them in 'data/glove_dataset'
+Download the pre-trained word vectors https://github.com/stanfordnlp/GloVe : choose the file "glove.twitter.27B.200d"
 
 In preprocessing folder : Run tokenizer_embedding to get the embedding matrix (build embedding matrix using glove method) and the tokenizer
 
@@ -33,7 +33,7 @@ FOR linear model : -------------------------------------------------------------
 compute the embedded matrix using the method given in the assignement (build vocab, cut_vocab, ... glove_template) and put the embedding matrix and vocab 
 in 'data/not_preprocessed' or 'data/preprocessed' depending on if you have used the initial dataset or the preprocessed dataset. 
 
-In model folder : Run model_linear to build a model (you can modify which model you want a build LinearRegression, LinearSVM... ) 
+In model folder : Run model_linear to build a model (you can modify which model you want to build : LinearRegression, LinearSVM... ) 
 
 In run folder : Run 'run_linear' to get the csv file for our prediction
 
