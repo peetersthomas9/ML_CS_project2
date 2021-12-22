@@ -12,7 +12,7 @@ pre-processing : 	In this folder we have all the jupyter file to pre-processed t
 model : folder where we save all our model compute 
 	model_LSTM should be run on google colab so that we can use the GPU and compute our model faster, the cvs file is directly created at the end
 
-run : file where we can run our linear model to obtain the .cvs file with our prediction. 
+run : file where we can run our linear model to obtain the .cvs file with our prediction. run.py will reproduce the best performing model(cardiff roBERTa base). If you wish to test another BERT model we used, please see the "for BERT" section below
 
 BERTfinetunedmodels: Jupyter notebooks of BERT models and variants. The code for the "compute_metrics" function was curtosy of a class taught by James Henderson (IDIAP). 
 how to run LSTM and linear model : 
@@ -47,5 +47,11 @@ FOR BERT models : --------------------------------------------------------------
 
 
 They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps. The data and checkpoints need to be saved on google drive.
+
+Both the classify.ipynb and run.py will reproduce BERT sumbissions. The fine-tuned BERT models have all been uploaded to my huggingface account (mollypak) and are publically available. In order to test the different modes, the path must be changed in the "pipeline" function. The four paths are:
+a)mollypak/cardiff-num (the best one and default), Cardiff roBERTa base
+b)mollypak/cardiff-xlm-roberta-base - Cardiff XLM roBERTa
+c)mollypak/roberta-base
+d)mollypak/bert-multilingual-base
 
  
