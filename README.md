@@ -49,9 +49,13 @@ FOR BERT models : --------------------------------------------------------------
 They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps. The data and checkpoints need to be saved on google drive.
 
 Both the classify.ipynb and run.py will reproduce BERT sumbissions. The fine-tuned BERT models have all been uploaded to my huggingface account (mollypak) and are publically available. In order to test the different modes, the path must be changed in the "pipeline" function. The four paths are:
+
 a)mollypak/cardiff-num (the best one and default), Cardiff roBERTa base
+
 b)mollypak/cardiff-xlm-roberta-base - Cardiff XLM roBERTa
+
 c)mollypak/roberta-base
+
 d)mollypak/bert-multilingual-base
 
  
