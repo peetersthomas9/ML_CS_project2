@@ -58,6 +58,8 @@ c)mollypak/roberta-base
 
 d)mollypak/bert-multilingual-base
 
+Please not you will need the newest version of the "transformers" package to run the code
+
 Special thanks to the following tutorial for how to parallelize data on TPUs
 https://colab.research.google.com/drive/1dVEfoxGvMAKd0GLnrUJSHZycGtyKt9mr#scrollTo=FyTR9V5jJWcS
 
