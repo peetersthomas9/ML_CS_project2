@@ -58,4 +58,7 @@ c)mollypak/roberta-base
 
 d)mollypak/bert-multilingual-base
 
- 
+Special thanks to the following tutorial for how to parallelize data on TPUs
+https://colab.research.google.com/drive/1dVEfoxGvMAKd0GLnrUJSHZycGtyKt9mr#scrollTo=FyTR9V5jJWcS
+
+Thanks to Dr. James Henderson at IDIAP whose course introduced me to pretraining huggingface models and helped. with the code (and provided the  "compute metrics" function
