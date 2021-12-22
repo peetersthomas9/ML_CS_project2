@@ -9,8 +9,12 @@ tensorflow : 	Tensorflow is an open source library that allow us to build and to
 
 keras : 	Keras is the high-level API of TensorFlow 2: an approachable, highly-productive interface for solving machine learning problems, with a focus on modern deep learning. We use it for our LSTM model 
 		https://keras.io/about/
+		
+transformers: Library to use huggingface transformers https://github.com/huggingface/transformers
 
-Library for useful tules :
+Library for useful tools :
+
+numpy and pandas: needs no explanation
 
 random : 	used to get a specific seed for our programs.
 		https://docs.python.org/3/library/random.html	
@@ -24,3 +28,7 @@ nltk : 		is the Natural Language Toolkit and is used for lemmatization :
 
 matplotlib : 	used to plot the results 
 		https://matplotlib.org/
+		
+re : regular extressions https://docs.python.org/3/library/re.html
+
+torch_xla: to run models on TPUs
