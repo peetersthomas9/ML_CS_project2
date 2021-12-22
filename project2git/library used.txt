@@ -1,0 +1,26 @@
+Libraries used to create our models: 
+
+sklearn : 	library used to appy linear regression and svm on our dataset. 
+		This library also offers tool to analyse our result later on and to use grid search and cross validation to obtain better results 
+		https://scikit-learn.org/stable/. 
+
+tensorflow : 	Tensorflow is an open source library that allow us to build and to train ML model. 
+		https://www.tensorflow.org/
+
+keras : 	Keras is the high-level API of TensorFlow 2: an approachable, highly-productive interface for solving machine learning problems, with a focus on modern deep learning. We use it for our LSTM model 
+		https://keras.io/about/
+
+Library for useful tules :
+
+random : 	used to get a specific seed for our programs.
+		https://docs.python.org/3/library/random.html	
+
+pickle : 	library used to save and load some data :
+		https://docs.python.org/3/library/pickle.html
+
+
+nltk : 		is the Natural Language Toolkit and is used for lemmatization : 
+		https://www.nltk.org/
+
+matplotlib : 	used to plot the results 
+		https://matplotlib.org/
