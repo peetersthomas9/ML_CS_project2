@@ -1,0 +1,1 @@
+Download here the pre-trained word vectors https://github.com/stanfordnlp/GloVe
