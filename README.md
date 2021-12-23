@@ -50,15 +50,17 @@ They are meant to be run on google TPUs- in order to run on CPU or GPU they code
 
 Both the classify.ipynb and run.py will reproduce BERT sumbissions. The fine-tuned BERT models have all been uploaded to my huggingface account (mollypak) and are publically available. In order to test the different modes, the path must be changed in the "pipeline" function. The four paths are:
 
-a)mollypak/cardiff-num (the best one and default), Cardiff roBERTa base
+a)mollypak/cardiff-num (the best one and default), Cardiff roBERTa base (LABEL_0,LABEL_2)
 
-b)mollypak/cardiff-xlm-roberta-base - Cardiff XLM roBERTa
+b)mollypak/cardiff-xlm-roberta-base - Cardiff XLM roBERTa (LABEL_0,LABEL_2)
 
-c)mollypak/roberta-base
+c)mollypak/roberta-base (LABEL_0,LABEL_2)
 
-d)mollypak/bert-multilingual-base
+d)mollypak/bert-multilingual-base (LABEL_0,LABEL_1)
 
-Please not you will need the newest version of the "transformers" package to run the run.py file
+The number at the end are the labels neeed for classification
+
+Please not you will need the newest version of the "transformers" package to run the run.py file. A jupyter notebook was also included to run on google colab if your pc is having troubles with the transformers version
 
 Special thanks to the following tutorial for how to parallelize data on TPUs
 https://colab.research.google.com/drive/1dVEfoxGvMAKd0GLnrUJSHZycGtyKt9mr#scrollTo=FyTR9V5jJWcS
