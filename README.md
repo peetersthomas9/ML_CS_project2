@@ -1,5 +1,9 @@
 # ML_CS_project2
 
+The goal of this project is to 
+
+
+
 We have 5 different folders : 
 
 data : 	In this folder we have the initial data and the preprocessed data. 
