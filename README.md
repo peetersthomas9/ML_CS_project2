@@ -1,72 +1,56 @@
-# ML_CS_project2
+# Project Text Sentiment Classification
 
-The goal of this project is to 
+The task of this competition is to predict if a tweet message used to contain a positive :) or negative :( smiley, by considering only the remaining text.
 
+As a baseline, we here provide sample code using word embeddings to build a text classifier system.
 
+Submission system environment setup:
 
-We have 5 different folders : 
+1. The dataset is available from the AIcrowd page, as linked in the PDF project description
 
-data : 	In this folder we have the initial data and the preprocessed data. 
-	We also have the different embedded matrix (the one obtained with the method in class and the one obtain using glove dataset. 
+ Download the provided datasets `twitter-datasets.zip`.
 
-pre-processing : 	In this folder we have all the jupyter file to pre-processed the data and get our training features. 
-			clean_text : we pre-process the text to get simpler sentence (remove punctuation, stop word, lower case, lemmatization)
-			tokenizer_embedding: we create the embedding matrix and the tokenizer (convert word to int) 
+2. To submit your solution to the online evaluation system, we require you to prepare a “.csv” file of the same structure as sampleSubmission.csv (the order of the predictions does not matter, but make sure the tweet ids and predictions match). Your submission is evaluated according to the classification error (number of misclassified tweets) of your predictions.
 
-model : folder where we save all our model compute 
-	model_LSTM should be run on google colab so that we can use the GPU and compute our model faster, the cvs file is directly created at the end
+*Working with Twitter data:* We provide a large set of training tweets, one tweet per line. All tweets in the file train pos.txt (and the train pos full.txt counterpart) used to have positive smileys, those of train neg.txt used to have a negative smiley. Additionally, the file test data.txt contains 10’000 tweets without any labels, each line numbered by the tweet-id.
 
-run : file where we can run our linear model to obtain the .cvs file with our prediction. run.py will reproduce the best performing model(cardiff roBERTa base). If you wish to test another BERT model we used, please see the "for BERT" section below
+Your task is to predict the labels of these tweets, and upload the predictions to AIcrowd. Your submission file for the 10’000 tweets must be of the form `<tweet-id>`, `<prediction>`, see `sampleSubmission.csv`.
 
-BERTfinetunedmodels: Jupyter notebooks of BERT models and variants. The code for the "compute_metrics" function was curtosy of a class taught by James Henderson (IDIAP). 
-how to run LSTM and linear model : 
+Note that all tweets have already been pre-processed so that all words (tokens) are separated by a single whitespace. Also, the smileys (labels) have been removed.
 
-Put the train and test set in data/not_preprocessed. 
+## Classification using Word-Vectors
 
-In preprocessing : Run clean_text to prerocess the data 
+For building a good text classifier, it is crucial to find a good feature representation of the input text. Here we will start by using the word vectors (word embeddings) of each word in the given tweet. For simplicity of a first baseline, we will construct the feature representation of the entire text by simply averaging the word vectors.
 
-FOR LSTM : ----------------------------------------------------------------------------------------
+Below is a solution pipeline with an evaluation step:
 
-Download the pre-trained word vectors https://github.com/stanfordnlp/GloVe
+### Generating Word Embeddings: 
 
-In preprocessing folder : Run tokenizer_embedding to get the embedding matrix (build embedding matrix using glove method) and the tokenizer
+Load the training tweets given in `pos_train.txt`, `neg_train.txt` (or a suitable subset depending on RAM requirements), and construct a a vocabulary list of words appearing at least 5 times. This is done running the following commands. Note that the provided `cooc.py` script can take a few minutes to run, and displays the number of tweets processed.
 
-In model folder: Go in google colab and use the GPU to run 'model_LSTM' (get the best performance using "glove.twitter.27B.200d" and the pre_processed dataset. 
-
----------------------------------------------------------------------------------------------------
-
-FOR linear model : --------------------------------------------------------------------------------
- 
-compute the embedded matrix using the method given in the assignement (build vocab, cut_vocab, ... glove_template) and put the embedding matrix and vocab 
-in 'data/not_preprocessed' or 'data/preprocessed' depending on if you have used the initial dataset or the preprocessed dataset. 
-
-In model folder : Run model_linear to build a model (you can modify which model you want a build LinearRegression, LinearSVM... ) 
-
-In run folder : Run 'run_linear' to get the csv file for our prediction
-
----------------------------------------------------------------------------------------------------
+```bash
+build_vocab.sh
+cut_vocab.sh
+python3 pickle_vocab.py
+python3 cooc.py
+```
 
 
-FOR BERT models : --------------------------------------------------------------------------------
+Now given the co-occurrence matrix and the vocabulary, it is not hard to train GloVe word embeddings, that is to compute an embedding vector for wach word in the vocabulary. We suggest to implement SGD updates to train the matrix factorization, as in
 
+```glove_solution.py```
 
-They are meant to be run on google TPUs- in order to run on CPU or GPU they code will need to be modified a little bit. Checkpoints happen a little under 10K steps. The data and checkpoints need to be saved on google drive.
+Once you tested your system on the small set of 10% of all tweets, we suggest you run on the full datasets `pos_train_full.txt`, `neg_train_full.txt`
 
-Both the classify.ipynb and run.py will reproduce BERT sumbissions. The fine-tuned BERT models have all been uploaded to my huggingface account (mollypak) and are publically available. In order to test the different modes, the path must be changed in the "pipeline" function. The four paths are:
+### Building a Text Classifier:
 
-a)mollypak/cardiff-num (the best one and default), Cardiff roBERTa base (LABEL_0,LABEL_2)
+1. Construct Features for the Training Texts: Load the training tweets and the built GloVe word embeddings. Using the word embeddings, construct a feature representation of each training tweet (by averaging the word vectors over all words of the tweet).
 
-b)mollypak/cardiff-xlm-roberta-base - Cardiff XLM roBERTa (LABEL_0,LABEL_2)
+2. Train a Linear Classifier: Train a linear classifier (e.g. logistic regression or SVM) on your constructed features, using the scikit learn library, or your own code from the earlier labs. Recall that the labels indicate if a tweet used to contain a :) or :( smiley.
 
-c)mollypak/roberta-base (LABEL_0,LABEL_2)
+3. Prediction: Predict labels for all tweets in the test set.
 
-d)mollypak/bert-multilingual-base (LABEL_0,LABEL_1)
+4. Submission / Evaluation: Submit your predictions to AIcrowd, and verify the obtained misclassification error score. (You can also use a local separate validation set to get faster feedback on the accuracy of your system). Try to tune your system for best evaluation score.
 
-The number at the end are the labels neeed for classification
-
-Please not you will need the newest version of the "transformers" package to run the run.py file. A jupyter notebook was also included to run on google colab if your pc is having troubles with the transformers version
-
-Special thanks to the following tutorial for how to parallelize data on TPUs
-https://colab.research.google.com/drive/1dVEfoxGvMAKd0GLnrUJSHZycGtyKt9mr#scrollTo=FyTR9V5jJWcS
-
-Thanks to Dr. James Henderson at IDIAP whose course introduced me to pretraining huggingface models and helped. with the code (and provided the  "compute metrics" function
+## Extensions:
+Naturally, there are many ways to improve your solution, both in terms of accuracy and computation speed. More advanced techniques can be found in the recent literature.
